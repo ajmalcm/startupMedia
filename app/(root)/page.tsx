@@ -10,9 +10,10 @@ export default async function Home({
   const query = (await searchParams).query;
 
   const posts=[{
-    createdAt:"Yestaerday",
+    _createdAt:new Date(),
+    title:"Sell vapes to kids",
     views:55,
-    author:{_id:1},
+    author:{_id:1,name:'jack'},
     _id:1,
     description:"this is description",
     image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQOkS2cvYsjnwsSVXS-Wwat4VQs2YFWuO51A&s",
