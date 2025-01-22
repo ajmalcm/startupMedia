@@ -11,6 +11,7 @@ export const createPitch=async(
     pitch:string
 )=>{
     const session=await auth();
+    console.log(session?.id)
     if(!session)
     {
         return parseServerActionResponse({
@@ -33,7 +34,7 @@ export const createPitch=async(
             image:link,
             slug:{
                 _type:slug,
-                _ref:slug
+                current:slug
             },
             author:{
                 _type:"reference",
