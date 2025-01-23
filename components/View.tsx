@@ -19,7 +19,7 @@ const View = async ({id}:{id:string}) => {
 
         <p className='view-text'>
             <span className='font-black'>
-               views: {totalViews}
+               views: {totalViews || 0}
             </span>
         </p>
     </div>
