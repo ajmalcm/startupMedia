@@ -1,6 +1,5 @@
 import {withSentryConfig} from "@sentry/nextjs";
 import type { NextConfig } from "next";
-const withTM = require('next-transpile-modules')(['lucide-react', 'sanity']);
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -8,7 +7,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors:true
   },
   eslint:{
-    ignoreDuringBuilds:true
+    ignoreDuringBuilds:true,
   },
   images:{
     dangerouslyAllowSVG:true,
@@ -17,9 +16,10 @@ const nextConfig: NextConfig = {
       hostname:'*',
     }]
   },
+  output: "standalone",
   experimental:{
+    esmExternals:true,
     ppr:"incremental",
-    esmExternals:true
   },
   devIndicators:{
     appIsrStatus:true,
@@ -28,7 +28,7 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default withTM(withSentryConfig(nextConfig, {
+export default withSentryConfig(nextConfig, {
 // For all available options, see:
 // https://github.com/getsentry/sentry-webpack-plugin#options
 
@@ -66,4 +66,4 @@ disableLogger: true,
 // https://docs.sentry.io/product/crons/
 // https://vercel.com/docs/cron-jobs
 automaticVercelMonitors: true,
-}));
+});
