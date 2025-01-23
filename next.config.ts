@@ -1,5 +1,6 @@
 import {withSentryConfig} from "@sentry/nextjs";
 import type { NextConfig } from "next";
+const withTM = require('next-transpile-modules')(['lucide-react', 'sanity']);
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -18,6 +19,7 @@ const nextConfig: NextConfig = {
   },
   experimental:{
     ppr:"incremental",
+    esmExternals:true
   },
   devIndicators:{
     appIsrStatus:true,
@@ -26,7 +28,7 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default withSentryConfig(nextConfig, {
+export default withTM(withSentryConfig(nextConfig, {
 // For all available options, see:
 // https://github.com/getsentry/sentry-webpack-plugin#options
 
@@ -64,4 +66,4 @@ disableLogger: true,
 // https://docs.sentry.io/product/crons/
 // https://vercel.com/docs/cron-jobs
 automaticVercelMonitors: true,
-});
+}));
